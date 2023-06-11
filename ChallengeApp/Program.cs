@@ -1,25 +1,42 @@
-﻿int number = 13777799;
-string numberInString = number.ToString();
-char[] numbersAsChars = numberInString.ToArray();
+﻿using ChallengeApp;
 
+Employee employee1 = new Employee("Adam", "Kowalski", "34");
+Employee employee2 = new Employee("Marta", "Tarnowska", "28");
+Employee employee3 = new Employee("Janusz", "Tratwa", "55");
 
-string[] result = { "0 => ", "1 => ", "2 => ", "3 => ", "4 => ", "5 => ", "6 => ", "7 => ", "8 => ", "9 => " };
-int[] result2 = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+employee1.AddScore(5);
+employee1.AddScore(5);
+employee1.AddScore(5);
+employee1.AddScore(5);
+employee1.AddScore(5);
 
-foreach (char c in numbersAsChars)
+employee2.AddScore(4);
+employee2.AddScore(4);
+employee2.AddScore(4);
+employee2.AddScore(4);
+employee2.AddScore(4);
+
+employee3.AddScore(3);
+employee3.AddScore(3);
+employee3.AddScore(3);
+employee3.AddScore(3);
+employee3.AddScore(3);
+
+List<Employee> employees = new List<Employee>()
 {
-    for (int j = 0; j < 10; j++)
+    employee1, employee2, employee3
+};
+
+int maxResult = -1;
+Employee employeeWithMax = null;
+
+foreach (var employee in employees)
+{
+    if(employee.Result > maxResult)
     {
-        if (j.ToString() == c.ToString())
-        {
-            result2[j] += 1;
-        }
+        maxResult = employee.Result;
+        employeeWithMax = employee;
     }
 }
 
-Console.WriteLine("Wyniki dla liczby: " + number);
-
-for (int i = 0; i < 10; i++)
-{
-    Console.WriteLine(result[i] + result2[i]);
-}
+Console.WriteLine("Najlepszym pracownikiem jest: " + employeeWithMax.Name + " " + employeeWithMax.Surname);
