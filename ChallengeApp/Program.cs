@@ -32,7 +32,7 @@ Employee employeeWithMax = null;
 
 foreach (var employee in employees)
 {
-    if(employee.Result > maxResult)
+    if (employee.Result > maxResult)
     {
         maxResult = employee.Result;
         employeeWithMax = employee;
