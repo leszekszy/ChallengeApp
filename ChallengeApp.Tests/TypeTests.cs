@@ -3,59 +3,56 @@
     public class TypeTests
     {
         [Test]
-        public void intNumbersShouldBeTheSameValue()
+        public void minValueTest()
         {
             // Arrange
-            int number1 = 12;
-            int number2 = 12;
+            var employee = GetEmployee("Janusz", "Kowalski");
+            employee.AddGrade(1);
+            employee.AddGrade(2);
+            employee.AddGrade(6);
 
             // Act
 
+            var statistics = employee.GetStatistics();
+
             // Assert
-            Assert.AreEqual(number1, number2);
+            Assert.AreEqual(1, statistics.Min);
         }
         [Test]
-        public void floatNumbersShouldBeDifferentValue()
+        public void maxValueTest()
         {
             // Arrange
-            float number3 = 123.12F;
-            float number4 = 1275.12F;
+            var employee = GetEmployee("Janusz", "Kowalski");
+            employee.AddGrade(1);
+            employee.AddGrade(2);
+            employee.AddGrade(6);;
 
             // Act
 
+            var statistics = employee.GetStatistics();
+
             // Assert
-            Assert.AreNotEqual(number3, number4);
-;
+            Assert.AreEqual(6, statistics.Max);
         }
         [Test]
-        public void namesShouldBeTheSame()
+        public void AverageValueTest()
         {
             // Arrange
-            string str1 = "Janusz";
-            string str2 = "Janusz";
+            var employee = GetEmployee("Janusz", "Kowalski");
+            employee.AddGrade(1);
+            employee.AddGrade(2);
+            employee.AddGrade(6);
 
             // Act
 
-            // Assert
-            Assert.AreEqual(str1, str2);
-        }
-
-        [Test]
-        public void namesShouldBeDifferent()
-        {
-            // Arrange
-            var employee1 = GetEmployee("Janusz");
-            var employee2 = GetEmployee("Tomasz");
-
-            // Act
+            var statistics = employee.GetStatistics();
 
             // Assert
-            Assert.AreNotEqual(employee1.Name, employee2.Name);
-
+            Assert.AreEqual(3, statistics.Average);
         }
-        private Employee GetEmployee(string name)
+        private Employee GetEmployee(string name, string surname)
         {
-            return new Employee(name);
+            return new Employee(name, surname);
         }
     }
 }
