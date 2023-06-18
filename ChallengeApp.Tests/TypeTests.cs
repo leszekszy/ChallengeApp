@@ -50,6 +50,22 @@
             // Assert
             Assert.AreEqual(3, statistics.Average);
         }
+        [Test]
+        public void AverageValueLetterTest()
+        {
+            // Arrange
+            var employee = GetEmployee("Janusz", "Kowalski");
+            employee.AddGrade('a');
+            employee.AddGrade('b');
+            employee.AddGrade(70);
+
+            // Act
+
+            var statistics = employee.GetStatistics();
+
+            // Assert
+            Assert.AreEqual('A', statistics.AverageLetter);
+        }
         private Employee GetEmployee(string name, string surname)
         {
             return new Employee(name, surname);
