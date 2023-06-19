@@ -9,22 +9,31 @@ while (true)
 {
     Console.WriteLine("Podaj kolejną ocenę pracownika: /q żeby zakończyć");
     var input = Console.ReadLine();
-    if (input.Length == 0)
-    {
-        Console.WriteLine("Wpisz ocenę!");
-        Console.WriteLine();
-    }
-    else if (input == "q")
+    if (input == "q")
     {
         break;
     }
-    else if (input.All(Char.IsLetter))
+    else if (input.All(Char.IsLetter) && input.Length == 1)
     {
-        employee.AddGrade(char.Parse(input));
+        try 
+        { 
+            employee.AddGrade(char.Parse(input));
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine($"Exception handled / {e.Message}");
+        }
     }
-    else 
-    { 
-        employee.AddGrade(input); 
+    else
+    {
+        try
+        {
+            employee.AddGrade(input);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Exception handled / {e.Message}");
+        }
     }
 }
 
