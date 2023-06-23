@@ -1,9 +1,9 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
         private List<float> grades = new List<float>();
-        public Employee(string name, string surname)
+        public Supervisor(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
@@ -24,13 +24,62 @@
         }
         public void AddGrade(string grade)
         {
-            if (float.TryParse(grade, out float result))
+            switch (grade)
             {
-                this.AddGrade(result);
-            }
-            else
-            {
-                throw new Exception("String is not float");
+                case "6":
+                    this.grades.Add(100);
+                    break;
+                case "6-":
+                case "-6":
+                    this.grades.Add(95);
+                    break;
+                case "5+":
+                case "+5":
+                    this.grades.Add(85);
+                    break;
+                case "5":
+                    this.grades.Add(80);
+                    break;
+                case "5-":
+                case "-5":
+                    this.grades.Add(75);
+                    break;
+                case "4+":
+                case "+4":
+                    this.grades.Add(65);
+                    break;
+                case "4":
+                    this.grades.Add(60);
+                    break;
+                case "4-":
+                case "-4":
+                    this.grades.Add(55);
+                    break;
+                case "3+":
+                case "+3":
+                    this.grades.Add(45);
+                    break;
+                case "3":
+                    this.grades.Add(40);
+                    break;
+                case "3-":
+                case "-3":
+                    this.grades.Add(35);
+                    break;
+                case "2+":
+                case "+2":
+                    this.grades.Add(25);
+                    break;
+                case "2":
+                    this.grades.Add(20);
+                    break;
+                case "2-":
+                case "-2":
+                    this.grades.Add(15);
+                    break;
+                case "1":
+                    this.grades.Add(0);
+                    break;
             }
         }
         public void AddGrade(double grade)
