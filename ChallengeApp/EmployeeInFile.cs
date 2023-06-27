@@ -47,39 +47,36 @@ namespace ChallengeApp
         }
         public override void AddGrade(char grade)
         {
-            using (var writer = File.AppendText(fileName))
+            switch (grade)
             {
-                switch (grade)
-                {
-                    case 'A':
-                    case 'a':
-                        writer.WriteLine(100);
-                        break;
-                    case 'B':
-                    case 'b':
-                        writer.WriteLine(80);
-                        break;
-                    case 'C':
-                    case 'c':
-                        writer.WriteLine(60);
-                        break;
-                    case 'D':
-                    case 'd':
-                        writer.WriteLine(40);
-                        break;
-                    case 'E':
-                    case 'e':
-                        writer.WriteLine(20);
-                        break;
-                    default:
-                        throw new Exception("Wrong letter");
-                }
+                case 'A':
+                case 'a':
+                    this.AddGrade(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.AddGrade(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.AddGrade(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.AddGrade(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.AddGrade(20);
+                    break;
+                default:
+                    throw new Exception("Wrong letter");
             }
         }
         public override Statistics GetStatistics()
         {
-            var gradesFromFile = ReadGradesFromFile();
-            var result = CountStatistics(gradesFromFile);
+            var gradesFromFile = this.ReadGradesFromFile();
+            var result = this.CountStatistics(gradesFromFile);
             return result;
         }
         private List<float> ReadGradesFromFile()
